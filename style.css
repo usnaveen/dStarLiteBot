@@ -1,0 +1,135 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFC0CB; /* Pastel Pink */
+}
+
+.container {
+    background-color: #ADD8E6; /* Pastel Blue */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    width: 200px;
+    height: 200px;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    background-color: #ddd;  /* Adjust as needed */
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 20px;      /* Adjust or remove based on content */ 
+}
+
+.cell.green {
+    background-color: #4CAF50 !important;
+    color: #fff;
+}
+
+.cell.red {
+    background-color: #F44336 !important;
+    color: #fff;
+}
+
+.cell.obstacle {
+    background-color: #000;
+    color: #fff;
+}
+ 
+#randomize-button { 
+    margin-top: 10px;
+    width: 100px;   /* Set your desired button width */
+    height: 40px;   /* Set your desired button height */
+    padding: 8px 15px;  /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+#num-obstacles {
+    margin-top: 10px;
+    width: 100px;   /* Set your desired button width */
+    height: 40px;   /* Set your desired button height */
+    margin-right: 10px;
+    background-color: #ADD8E6; /* Match container color */
+    color: #666; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle effect */
+    border: none;
+} 
+
+#num-obstacles:hover {
+    background-color: #90caf9; /* Slightly lighter shade */
+}
+
+#randomize-button {
+    background-color: #3f51b5;
+    color: #fff; 
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;  
+} 
+
+.presets {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; 
+    justify-content: space-between; /* Distribute buttons evenly */
+    align-items: center; /* Center align items vertically */
+}
+
+.presets button {
+    flex-grow: 1; /* Make buttons grow to fill the available space */
+    height: 40px;
+    margin: 0 5px; /* Adjust margin as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.presets > button#button-a { background-color: yellow; }
+.presets > button#button-b { background-color: blue; }
+.presets > button#button-c { background-color: green; }
+.presets > button#button-d { background-color: red; }
+
+.cell.visited {
+    background-color: gray; /* Adjust for a less prominent color */
+}
+
+.cell.path {
+    background-color: blue; /* Adjust as needed */
+}
+
+.confirm-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+

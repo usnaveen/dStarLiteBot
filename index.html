@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Randomizer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="grid" id="grid-container">
+            </div>
+        <div class="controls">
+            <input type="number" id="num-obstacles" min="0" max="30" value="0" placeholder="Obstacles">
+            <button id="randomize-button">Randomize</button>
+        </div>
+        <div class="controls">  </div><div class="preset-buttons">
+        <button id="button-a">A</button>
+        <button id="button-b">B</button>
+        <button id="button-c">C</button>
+        <button id="button-d">D</button>
+        <button id="calculate-path-button">Calculate Path</button>
+<!--         <button id="create-button">Create</button>
+        <button id="done-button">Done</button>  -->
+</div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
