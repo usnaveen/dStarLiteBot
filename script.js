@@ -272,31 +272,30 @@ function postObstacles(obstacles) {
 }
 
 // Function to calculate and retrieve the route
+function handleFetchError(error) {
+  console.error('Error getting route:', error);
+  alert('An error occurred while calculating the path. Please check your network connection and try again.');
+}
+
 function calculateRoute() {
   const start = collectStartData();
   const goal = collectGoalData();
 
-  fetch(getRouteEndpoint, {
-    method: 'GET', 
-    headers: { 'Content-Type': 'application/json' },
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error getting route');
-    }
-    return response.json();
-  })
-  .then(data => {
-    if (data.message === 'No path found') {
-      alert('No path could be found between the start and goal!');
-    } else {
-      visualizePath(data);
-    }
-  })
-  .catch(error => {
-    console.error('Error getting route:', error);
-    alert('An error occurred while calculating the path. Please check your network connection and try again.');
-  });
+  fetch(getRouteEndpoint)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error getting route');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.message === 'No path found') {
+        alert('No path could be found between the start and goal!');
+      } else {
+        visualizePath(data);
+      }
+    })
+    .catch(handleFetchError);
 }
 
 
