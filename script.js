@@ -277,7 +277,7 @@ function calculateRoute() {
   const goal = collectGoalData();
 
   fetch(getRouteEndpoint, {
-    method: 'POST', 
+    method: 'GET', 
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ start, goal }) 
   })
