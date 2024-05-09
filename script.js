@@ -292,10 +292,10 @@ function calculateRoute() {
   // Ensure obstacles have been posted before calculating
   // You might add a check or mechanism in postObstacles to set a flag 
   // indicating successful obstacle posting
-  if (!obstaclesHaveBeenPosted) {
-    alert('Please configure obstacles before calculating the path.');
-    return;
-  }
+  // if (!obstaclesHaveBeenPosted) {
+  //   alert('Please configure obstacles before calculating the path.');
+  //   return;
+  // }
 
   fetch(getRouteEndpoint, {
      method: 'GET' 
