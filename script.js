@@ -271,7 +271,7 @@ function postObstacles(obstacles) {
   });
 }
 
-/ Improved and more reliable fetch error handling
+// Improved and more reliable fetch error handling
 function handleFetchError(error) {
   console.error('Error getting route:', error);
   // Display a user-friendly error message
