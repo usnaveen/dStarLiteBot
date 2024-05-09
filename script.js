@@ -490,20 +490,36 @@ function saveUserScenario(presetName) {
 
 // Button Event Listeners (Revised)
 document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is loaded
-    document.getElementById('button-a').addEventListener('click', () => setPreset('a'));
-    document.getElementById('button-b').addEventListener('click', () => setPreset('b'));
-    document.getElementById('button-c').addEventListener('click', () => setPreset('c')); 
-    document.getElementById('button-d').addEventListener('click', () => setPreset('d'));
-    document.getElementById('calculate-path-button').addEventListener('click', () => {
-  postObstacles(collectGridObstacleData()); // Post the initial obstacles
-  calculateRoute(); // Calculate the route
-});
-//     document.getElementById('create-button').addEventListener('click', handleCreateButtonClick); 
-//     document.getElementById('done-button').addEventListener('click', () => {
-//   showConfirmModal();
-//   gridContainer.removeEventListener('click', handleCellClick);  
-// });
+    document.getElementById('button-a').addEventListener('click', () => {
+        setPreset('a');
+        postObstacles(presets['a'].obstacles);
+    });
 
+    document.getElementById('button-b').addEventListener('click', () => {
+        setPreset('b');
+        postObstacles(presets['b'].obstacles);
+    });
+
+    document.getElementById('button-c').addEventListener('click', () => {
+        setPreset('c');
+        postObstacles(presets['c'].obstacles);
+    });
+
+    document.getElementById('button-d').addEventListener('click', () => {
+        setPreset('d');
+        postObstacles(presets['d'].obstacles);
+    });
+
+    document.getElementById('calculate-path-button').addEventListener('click', calculateRoute);
+
+    document.getElementById('randomize-button').addEventListener('click', () => {
+        gridContainer.innerHTML = '';
+        obstacleCount = 0;
+        generateGrid();
+        setStartAndEndPoints();
+        setObstacles();
+        postObstacles(collectGridObstacleData());
+    });
 });
 
 
