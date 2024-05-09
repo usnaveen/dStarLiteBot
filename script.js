@@ -279,7 +279,6 @@ function calculateRoute() {
   fetch(getRouteEndpoint, {
     method: 'GET', 
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ start, goal }) 
   })
   .then(response => {
     if (!response.ok) {
