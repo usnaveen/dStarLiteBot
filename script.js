@@ -296,24 +296,25 @@ function calculateRoute() {
   //   alert('Please configure obstacles before calculating the path.');
   //   return;
   // }
-
+  console.log("Before fetch: getRouteEndpoint = ", getRouteEndpoint);  // Log the endpoint
   fetch(getRouteEndpoint, {
      method: 'GET' 
   })
      .then(response => {
+       console.log("Full response:", response); // Log the entire response object
        if (!response.ok) {
          throw new Error(`Network response was not ok (status: ${response.status})`); // More informative error
        }
        return response.json();
      })
      .then(data => {
-       if (data.message === 'No path found') {
-         alert('No path could be found between the start and goal!');
-       } else {
-         console.log('Server response data:', data); 
-         visualizePath(data);
-       }
-     })
+  if (data.message === 'No path found') {
+    alert('No path could be found between the start and goal!');
+  } else {
+    console.log('Server response data:', data);
+    visualizePath(data.path, data.visited);
+  }
+})
      .catch(handleFetchError);
 }
 
@@ -352,32 +353,28 @@ function calculateRoute() {
 //   });
 // }
 
-function visualizePath(pathData) {
-    const path = pathData.path;
-    const visited = pathData.visited;
-
-    const gridContainer = document.getElementById('grid-container');  
-    const cells = gridContainer.querySelectorAll('.cell'); 
+function visualizePath(path, visited) {
+    const gridContainer = document.getElementById('grid-container');
+    const cells = gridContainer.querySelectorAll('.cell');
 
     // Clear existing styles
     cells.forEach(cell => cell.classList.remove('path', 'visited'));
 
     // Style visited cells (e.g., lighter background)
-    visited.forEach(coord => { 
+    visited.forEach(coord => {
         const [row, col] = coord;
-        const cellIndex = (col-1) + ((row-1) * 8) + 1; 
+        const cellIndex = (col - 1) + ((row - 1) * 8) + 1;
         const cell = gridContainer.querySelector(`[data-index="${cellIndex}"]`);
-        cell.classList.add('visited'); 
+        cell.classList.add('visited');
     });
 
     // Style path cells (e.g., blue background)
     path.forEach(coord => {
         const [row, col] = coord;
-        const cellIndex = (col-1) + ((row-1) * 8) + 1; 
+        const cellIndex = (col - 1) + ((row - 1) * 8) + 1;
         const cell = gridContainer.querySelector(`[data-index="${cellIndex}"]`);
-        cell.classList.add('path'); 
+        cell.classList.add('path');
     });
-
 }
 
 let isCreatingObstacles = false;
