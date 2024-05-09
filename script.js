@@ -310,6 +310,7 @@ function calculateRoute() {
        if (data.message === 'No path found') {
          alert('No path could be found between the start and goal!');
        } else {
+         console.log('Server response data:', data); 
          visualizePath(data);
        }
      })
