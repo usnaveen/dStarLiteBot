@@ -271,34 +271,51 @@ function postObstacles(obstacles) {
   });
 }
 
-// Function to calculate and retrieve the route
+/ Improved and more reliable fetch error handling
 function handleFetchError(error) {
-  console.error('Error getting route:', error);
-  alert('An error occurred while calculating the path. Please check your network connection and try again.');
+  console.error('Error getting route:', error);
+  // Display a user-friendly error message
+  alert('An error occurred while calculating the path. Please check if obstacles are set correctly and try again.'); // Customize the message as needed
 }
 
+// Improved calculation function
 function calculateRoute() {
-  const start = collectStartData();
-  const goal = collectGoalData();
+  const start = collectStartData();
+  const goal = collectGoalData();
 
-  fetch(getRouteEndpoint, {
-    method: 'GET') 
+  // Validate start and goal
+  if (!start || !goal) {
+    alert('Please set a start and goal position on the grid.');
+    return;
+  }
+
+  // Ensure obstacles have been posted before calculating
+  // You might add a check or mechanism in postObstacles to set a flag 
+  // indicating successful obstacle posting
+  if (!obstaclesHaveBeenPosted) {
+    alert('Please configure obstacles before calculating the path.');
+    return;
+  }
+
+  fetch(getRouteEndpoint, {
+     method: 'GET' 
   })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error getting route');
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.message === 'No path found') {
-        alert('No path could be found between the start and goal!');
-      } else {
-        visualizePath(data);
-      }
-    })
-    .catch(handleFetchError);
+     .then(response => {
+       if (!response.ok) {
+         throw new Error(`Network response was not ok (status: ${response.status})`); // More informative error
+       }
+       return response.json();
+     })
+     .then(data => {
+       if (data.message === 'No path found') {
+         alert('No path could be found between the start and goal!');
+       } else {
+         visualizePath(data);
+       }
+     })
+     .catch(handleFetchError);
 }
+
 
 
 // function testPathfinding() {
