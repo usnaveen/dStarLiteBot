@@ -73,7 +73,7 @@ function setObstacles() {
         !cell.classList.contains('obstacle')) {
 
       cell.classList.add('obstacle');
-      cell.textContent = obstacleCount + 1; 
+      cell.textContent = ''; 
       obstaclesPlaced++;
       obstacleCount++; 
     }
