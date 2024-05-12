@@ -249,6 +249,7 @@ function collectGoalData() {
 
 const postObstaclesEndpoint = 'https://fgakuonqpd.execute-api.ap-south-1.amazonaws.com/postObstacles';
 const getRouteEndpoint = 'https://fgakuonqpd.execute-api.ap-south-1.amazonaws.com/getRoute';
+const startEndpoint = 'https://fgakuonqpd.execute-api.ap-south-1.amazonaws.com/start';
 
 // Function to post obstacles 
 function postObstacles(obstacles) {
@@ -486,7 +487,7 @@ function saveUserScenario(presetName) {
 }
 
 function startRobot() {
-  fetch('https://your-api-endpoint/start', {
+  fetch(startEndpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
