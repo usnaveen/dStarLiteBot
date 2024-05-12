@@ -485,7 +485,25 @@ function saveUserScenario(presetName) {
   };
 }
 
-
+function startRobot() {
+  fetch('https://your-api-endpoint/start', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Robot started successfully');
+      // You can add additional logic here if needed
+    } else {
+      console.error('Failed to start the robot');
+    }
+  })
+  .catch(error => {
+    console.error('Error starting the robot:', error);
+  });
+}
 
 
 // Button Event Listeners (Revised)
@@ -520,6 +538,7 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is load
         setObstacles();
         postObstacles(collectGridObstacleData());
     });
+    document.getElementById('start-button').addEventListener('click', startRobot);
 });
 
 
