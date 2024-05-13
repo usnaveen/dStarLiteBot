@@ -111,19 +111,17 @@ randomizeButton.addEventListener('click', () => {
 // Preset Data (Ensure coordinates are grouped as [row, col] pairs within arrays)
 const presets = {
     a: {
-        obstacles: [
-            [1, 2], [3, 5], [4, 1]
-        ],
-        start: [1, 3],
-        goal: [6, 6]
-    },
+    obstacles: [[3,3],[3, 7], [3, 4], [3, 5],[3,6],[5,3],[5, 7], [5, 4], [5, 5],[5,6]],  
+    start: [8, 8],
+    goal: [1, 1] 
+},
     b: {
         obstacles: [
-            [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], 
-            [2, 4], [3, 4], [4, 4], [5, 4], [6, 4]
+            [1, 3], [4, 6], [5, 3], [6, 3], 
+             [6, 4], 
         ],
-        start: [1, 1],
-        goal: [8, 8]
+        start: [8, 8],
+        goal: [1,1] 
     },
     c: {
         obstacles: [
